@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A little playground for big ideas. Understand 20 algorithms through everyday stories, moving pictures, and one small step at a time. No coding needed.">
+  <meta name="theme-color" content="#faf9f6">
+  <title>AlgoVista · See the idea.</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='18' fill='%232b5644'/%3E%3Cpath d='M15 43 27 18h10l12 25M21 33h23' fill='none' stroke='%23fff5cf' stroke-width='5' stroke-linecap='round'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="styles.css">
+  <script src="algorithms.js" defer></script>
+  <script src="lessons.js" defer></script>
+  <script src="simulations.js" defer></script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to the playground</a>
+  <button class="menu-scrim" id="menu-scrim" aria-label="Close lesson menu" hidden></button>
+  <aside class="sidebar" aria-label="Algorithm library">
+    <a class="brand" href="#bfs"><span class="brand-mark" aria-hidden="true">a<span>v</span></span><span>AlgoVista<small>See the idea.</small></span></a>
+    <div class="shelf-label">THE LITTLE LIBRARY <span>20</span></div>
+    <nav id="algorithm-nav" aria-label="Choose a lesson"></nav>
+    <div class="sidebar-foot"><span aria-hidden="true">✳</span><p>Curiosity is the only<br>prerequisite.</p></div>
+  </aside>
+  <main id="main" tabindex="-1">
+    <header class="topbar">
+      <button class="icon-button mobile-menu" id="menu-button" aria-label="Open lesson menu" aria-expanded="false">☰</button>
+      <div class="breadcrumb"><span id="category-label"></span><span aria-hidden="true">/</span><strong id="algorithm-label"></strong></div>
+      <button class="text-button" id="help-button">How to play <span class="question-mark">?</span></button>
+    </header>
+    <div class="workspace">
+      <section class="lesson-head" aria-labelledby="algorithm-title">
+        <div><p class="eyebrow"><span id="lesson-number"></span><span class="small-rule"></span><span id="eyebrow"></span></p>
+          <h1 id="algorithm-title"></h1><p class="lesson-subtitle" id="algorithm-summary"></p></div>
+        <div class="margin-note" aria-hidden="true">Little steps.<br>Big <span>aha!</span><svg viewBox="0 0 70 42"><path d="M60 4C48 29 32 34 8 22m0 0 8-1M8 22l4 8"/></svg></div>
+      </section>
+
+      <div class="lesson-layout">
+        <section class="playground" aria-label="Interactive algorithm visualization">
+          <div class="playground-heading"><div><span class="section-tag">THE PLAYGROUND</span><h2 id="scene-title"></h2></div><button class="text-button new-example" id="randomize-button"><span aria-hidden="true">↻</span> New example</button></div>
+          <div class="scene-tools" id="scene-tools"></div>
+          <div class="stage-wrap"><div id="visual-stage" class="visual-stage"></div><div class="scene-caption" id="scene-caption"></div></div>
+          <div class="legend" id="legend" aria-label="What the colors mean"></div>
+          <div class="narration" id="narration"><span class="narration-symbol" id="narration-symbol" aria-hidden="true">→</span><div><span id="phase-label" class="phase-label">LET’S BEGIN</span><p id="now-copy" aria-live="polite" aria-atomic="true"></p></div><span class="step-count" id="step-count"></span></div>
+          <div class="transport">
+            <div class="transport-buttons"><button class="play-button" id="play-button" aria-label="Play visualization"><span aria-hidden="true">▶</span><b>Watch it happen</b></button><button class="icon-button" id="back-button" aria-label="Previous step" title="Previous step">←</button><button class="step-button" id="next-button" aria-label="Next step">Next <span aria-hidden="true">→</span></button><button class="icon-button" id="restart-button" aria-label="Start over" title="Start over">↺</button></div>
+            <label class="speed-control">Pace <select id="speed-select" aria-label="Animation speed"><option value="1400">Slow</option><option value="760" selected>Steady</option><option value="270">Quick</option><option value="80">Zoom</option></select></label>
+          </div>
+          <label class="timeline-control"><span class="sr-only">Go to a step</span><input id="progress-track" type="range" min="0" max="100" value="0" aria-label="Go to a step"></label>
+        </section>
+
+        <aside class="story-panel" aria-label="Understand the idea">
+          <span class="section-tag">PICTURE THIS</span><div class="story-icon" id="story-icon" aria-hidden="true"></div><h2 id="story-title"></h2><p id="story-copy"></p>
+          <div class="one-rule"><span>THE ONE RULE</span><p id="story-rule"></p></div>
+          <div class="recipe"><span class="section-tag">FOLLOW THE IDEA</span><ol id="recipe-steps"></ol></div>
+          <div class="try-note"><span aria-hidden="true">↗</span><div><strong>A little experiment</strong><p id="try-copy"></p></div></div>
+        </aside>
+      </div>
+
+      <section class="takeaway"><span class="takeaway-spark" aria-hidden="true">✳</span><div><span class="section-tag">THE AHA MOMENT</span><p id="takeaway-copy"></p></div></section>
+      <details class="under-hood" id="under-hood"><summary><span><span aria-hidden="true">{ }</span> Curious about the code?</span><span class="detail-note">The technical bit <span aria-hidden="true">+</span></span></summary><div class="technical-body"><div><h3 id="technical-title"></h3><p id="technical-summary"></p><div class="complexity"><span>Time <b id="time-complexity"></b></span><span>Memory <b id="space-complexity"></b></span></div><p class="technical-note">These describe the usual efficient implementation. The animation keeps a history of steps so you can rewind.</p><div id="technical-glossary"></div></div><pre id="code-content" aria-label="Pseudocode"><code></code></pre></div></details>
+      <footer class="page-footer"><span>AlgoVista <span aria-hidden="true">/</span> Twenty ways to think.</span><span>No coding needed. Just press play.</span></footer>
+    </div>
+  </main>
+  <dialog id="help-dialog"><button class="icon-button close-help" id="close-help" aria-label="Close help">×</button><span class="section-tag">MAKE YOURSELF AT HOME</span><h2>One step is all it takes.</h2><p>An algorithm is just a set of steps for solving a problem. Here, you can watch those steps and see why they work.</p><ol class="help-steps"><li>Pick an idea from the library.</li><li>Change the input above the picture. In graph lessons, add or remove nodes and edges, then drag nodes into place.</li><li>Press <strong>Watch it happen</strong>, or use <strong>Next</strong> to go at your own pace.</li><li>Read the sentence below the picture. It explains the current move.</li></ol><p class="help-keyboard"><kbd>Space</kbd> play / pause <kbd>←</kbd><kbd>→</kbd> step <kbd>R</kbd> new example</p><button class="play-button" id="start-learning">Let’s try it <span aria-hidden="true">→</span></button></dialog>
+</body>
+</html>
